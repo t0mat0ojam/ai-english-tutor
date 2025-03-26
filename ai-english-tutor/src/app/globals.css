@@ -1,26 +1,248 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Body styles */
+body {
+  background-color: #f4f4f4; /* Soft background color */
+  color: #333; /* Dark text color for readability */
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Header (taskbar) styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #007BFF; /* Blue background for taskbar */
+  color: white;
+}
+
+.header .logo h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffcc00; /* Highlight on hover */
+}
+
+/* Main content area styles */
+.main {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.hero {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* Button Styles */
+.getStartedButton {
+  display: inline-block;
+  padding: 15px 40px;
+  background-color: #28a745; /* Green button color */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.getStartedButton:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.getStartedButton:active {
+  background-color: #1e7e34; /* Even darker green when clicked */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 30px;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .getStartedButton {
+    padding: 12px 30px;
+    font-size: 1rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section Styling */
+section {
+  padding: 50px;
+  margin-top: 50px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#about {
+  background-color: #e0f7fa;
+}
+
+#features {
+  background-color: #f1f8e9;
+}
+
+#contact {
+  background-color: #fce4ec;
+}
+
+/* Centering the form */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: white;
+  color: black;
+  padding: 20px;
+  text-align: center; /* Ensures text inside is centered */
+}
+
+/* Centering the form itself */
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers inputs and button */
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input Fields */
+.signup-container input {
+  width: 100%; /* Takes full width of parent container */
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #0070f3;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  text-align: center; /* Centers placeholder text */
+}
+
+/* Signup Button */
+.signup-container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.signup-container button:hover {
+  background: #005bb5;
+  transform: scale(1.05);
+}
+
+/* Home Button */
+.home-button {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 1rem;
+  background: #f3f3f3;
+  color: black;
+  border: 2px solid #0070f3;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.home-button:hover {
+  background: #e0e0e0;
+  border-color: #005bb5;
+  transform: scale(1.05);
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.getStartedButton button, .loginButton button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loginButton button {
+  background-color: #007BFF; /* Blue for login */
 }
