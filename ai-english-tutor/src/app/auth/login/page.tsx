@@ -45,50 +45,43 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px", textAlign: "center" }}>
-      <h1>Log In</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ margin: "10px 0", padding: "10px", width: "100%" }}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ margin: "10px 0", padding: "10px", width: "100%" }}
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            backgroundColor: "#4CAF50",
-            color: "white",
-            padding: "10px 20px",
-            fontSize: "1rem",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            width: "100%",
-          }}
-        >
-          {loading ? "Logging In..." : "Log In"}
-        </button>
-      </form>
-      <p>
-        Don't have an account? <a href="./signup">Sign Up</a>
-      </p>
+    <div className="signup-container">
+      <div className="signup-box">
+        <h1 className="signup-title">Log In</h1>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Enter your password"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="signup-button"
+          >
+            {loading ? "Logging In..." : "Log In"}
+          </button>
+        </form>
+        <p className="login-link">
+          Don't have an account? <a href="./signup">Sign Up</a>
+        </p>
+      </div>
     </div>
   );
 };

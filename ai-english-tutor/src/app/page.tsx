@@ -1,5 +1,4 @@
 // pages/index.tsx
-
 import Link from 'next/link';
 import './globals.css';
 
@@ -28,11 +27,11 @@ const Home = () => {
 
           {/* Buttons for Sign Up & Log In */}
           <div className="buttonContainer">
-            <Link href="/auth/signup" className="getStartedButton">
-              <button>Get Started For Free</button>
+            <Link href="/auth/signup">
+              <button className="primaryButton getStartedButton">Get Started For Free</button>
             </Link>
-            <Link href="/auth/login" className="loginButton">
-              <button>Log In</button>
+            <Link href="/auth/login">
+              <button className="primaryButton loginButton">Log In</button>
             </Link>
           </div>
         </section>
@@ -60,5 +59,6 @@ const Home = () => {
 };
 
 export default Home;
+
 
 

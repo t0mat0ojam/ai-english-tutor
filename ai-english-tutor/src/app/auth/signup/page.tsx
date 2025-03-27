@@ -40,55 +40,50 @@ const SignUpPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px", textAlign: "center" }}>
-      <h1>Sign Up</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSignUp}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ margin: "10px 0", padding: "10px", width: "100%" }}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ margin: "10px 0", padding: "10px", width: "100%" }}
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            backgroundColor: "#4CAF50",
-            color: "white",
-            padding: "10px 20px",
-            fontSize: "1rem",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            width: "100%",
-          }}
-        >
-          {loading ? "Signing Up..." : "Sign Up"}
-        </button>
-      </form>
-      <p>
-        Already have an account? <a href="./login">Log In</a>
-      </p>
+    <div className="signup-container">
+      <div className="signup-box">
+        <h1 className="signup-title">Sign Up</h1>
+        {error && (
+          <div className="error-message">
+            <p>{error}</p>
+            <button className="close-error" onClick={() => setError("")}>
+              &times;
+            </button>
+          </div>
+        )}
+        <form onSubmit={handleSignUp}>
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="signup-button" disabled={loading}>
+            {loading ? "Signing Up..." : "Sign Up"}
+          </button>
+        </form>
+        <p className="login-link">
+          Already have an account? <a href="./login">Log In</a>
+        </p>
+      </div>
     </div>
   );
 };
 
 export default SignUpPage;
+
 
 
 

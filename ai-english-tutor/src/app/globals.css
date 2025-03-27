@@ -1,36 +1,48 @@
 @import "tailwindcss";
 
-/* Reset some default styles */
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
-/* Body styles */
+/* Animated Gradient Background */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
-  background-color: #f4f4f4; /* Soft background color */
-  color: #333; /* Dark text color for readability */
+  background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff9a9e);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: white;
   font-size: 16px;
   line-height: 1.6;
 }
 
-/* Header (taskbar) styles */
+/* Header (Navbar) */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #007BFF; /* Blue background for taskbar */
+  background: rgba(0, 123, 255, 0.2);
+  backdrop-filter: blur(10px);
   color: white;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.header .logo h1 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
+/* Responsive Navbar */
 .navbar {
   display: flex;
   gap: 20px;
@@ -40,75 +52,59 @@ body {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar a:hover {
-  color: #ffcc00; /* Highlight on hover */
+  color: #ffcc00;
+  transform: translateY(-2px);
 }
 
-/* Main content area styles */
-.main {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.hero {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  max-width: 800px;
-  margin: 50px auto;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 30px;
-  line-height: 1.8;
-}
-
-/* Button Styles */
-.getStartedButton {
-  display: inline-block;
-  padding: 15px 40px;
-  background-color: #28a745; /* Green button color */
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.getStartedButton:hover {
-  background-color: #218838; /* Darker green on hover */
-  transform: translateY(-2px); /* Slight lift effect */
-}
-
-.getStartedButton:active {
-  background-color: #1e7e34; /* Even darker green when clicked */
-}
-
-/* Responsive Design for Smaller Screens */
+/* Responsive Navigation for Mobile */
 @media (max-width: 768px) {
   .header {
-    padding: 10px 20px;
+    flex-direction: column;
+    padding: 15px;
   }
-
   .navbar {
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
+}
 
+/* Hero Section */
+.hero {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  margin: 50px auto;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero:hover {
+  transform: scale(1.02);
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* Responsive Hero */
+@media (max-width: 768px) {
   .hero {
     padding: 30px;
   }
@@ -120,129 +116,222 @@ body {
   .hero p {
     font-size: 1rem;
   }
-
-  .getStartedButton {
-    padding: 12px 30px;
-    font-size: 1rem;
-  }
 }
 
-/* Enable smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Button Container */
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-/* Section Styling */
+/* Button Styles */
+.primaryButton {
+  display: inline-block;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Get Started Button */
+.getStartedButton {
+  background-color: #28a745;
+  color: white;
+}
+
+.getStartedButton:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(40, 167, 69, 0.8);
+}
+
+/* Log In Button */
+.loginButton {
+  background-color: #007BFF;
+  color: white;
+}
+
+.loginButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.8);
+}
+
+/* Centered Sections */
 section {
   padding: 50px;
   margin-top: 50px;
-  border: 1px solid #ddd;
   border-radius: 8px;
-}
-
-#about {
-  background-color: #e0f7fa;
-}
-
-#features {
-  background-color: #f1f8e9;
-}
-
-#contact {
-  background-color: #fce4ec;
-}
-
-/* Centering the form */
-.signup-container {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: white;
-  color: black;
-  padding: 20px;
-  text-align: center; /* Ensures text inside is centered */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+  min-height: 300px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
 }
 
-/* Centering the form itself */
-.signup-container form {
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Backgrounds */
+#about { background-color: rgba(224, 247, 250, 0.8); }
+#features { background-color: rgba(241, 248, 233, 0.8); }
+#contact { background-color: rgba(252, 228, 236, 0.8); }
+
+/* Responsive Sections */
+@media (max-width: 768px) {
+  section {
+    padding: 30px;
+    min-height: 250px;
+  }
+}
+
+/* Full-screen container for centering */
+.signup-container {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;     /* Vertically center */
+  height: 100vh;           /* Full viewport height */
+  width: 100vw;            /* Full viewport width */
+  background: linear-gradient(135deg, #007BFF, #4CAF50); /* Background gradient */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Sign Up form box */
+.signup-box {
+  background: rgba(255, 255, 255, 0.9); /* Increased opacity for better contrast */
+  border-radius: 12px;
+  padding: 50px;  /* Increased padding for more space */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;        /* Increased maximum width of form */
+  width: 100%;             /* Take full width up to max-width */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers inputs and button */
-  width: 100%;
-  max-width: 400px;
-}
-
-/* Input Fields */
-.signup-container input {
-  width: 100%; /* Takes full width of parent container */
-  padding: 12px;
-  margin: 10px 0;
-  border: 2px solid #0070f3;
-  border-radius: 5px;
-  font-size: 1rem;
-  outline: none;
-  text-align: center; /* Centers placeholder text */
-}
-
-/* Signup Button */
-.signup-container button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.2rem;
-  background: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-}
-
-.signup-container button:hover {
-  background: #005bb5;
-  transform: scale(1.05);
-}
-
-/* Home Button */
-.home-button {
-  width: 100%;
-  max-width: 400px;
-  padding: 12px;
-  font-size: 1rem;
-  background: #f3f3f3;
-  color: black;
-  border: 2px solid #0070f3;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-}
-
-.home-button:hover {
-  background: #e0e0e0;
-  border-color: #005bb5;
-  transform: scale(1.05);
-}
-
-.buttonContainer {
-  display: flex;
-  gap: 15px;
+  align-items: center;
   justify-content: center;
-  margin-top: 20px;
 }
 
-.getStartedButton button, .loginButton button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
+/* Form heading */
+.signup-title {
+  font-size: 2.2rem; /* Slightly larger title */
+  color: black;
+  margin-bottom: 20px;
+}
+
+/* Input Field Wrapper */
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 14px;  /* Increased padding for input fields */
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  font-size: 1.1rem; /* Slightly larger font size */
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  color: #333; /* Darker text color */
+}
+
+/* Placeholder text color */
+.input-group input::placeholder {
+  color: #666; /* Darker placeholder color */
+}
+
+.input-group input:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sign Up Button Styling */
+.signup-button {
+  background: #ffcc00;
+  color: black;
+  padding: 14px;  /* Slightly larger padding for the button */
+  font-size: 1.2rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;             /* Ensure button spans the full width */
+  font-weight: bold;
 }
 
-.loginButton button {
-  background-color: #007BFF; /* Blue for login */
+.signup-button:hover {
+  background: #ffbb00;
+  transform: scale(1.05);
 }
+
+.signup-button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.close-error {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Login Link */
+.login-link {
+  margin-top: 15px;
+  color: black;
+}
+
+.login-link a {
+  color: yellow;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
